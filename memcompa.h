@@ -8,17 +8,19 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include "graphicInterface.h"
-#define CLAVE 2000000000
+#define CLAVE 20000000000
 using namespace std;
 class memcompa {
   public:
     memcompa(graphicInterface *ui);
-    void agregar_msg(char * message);
+    void agregar_msg(const char * message);
+    void leerMsg();
     int strToAsciiInt(string var);
   private:
     int var_comp;
     char * p;
-    char message_value[100];
+    graphicInterface *ui;
+    char message_value[500];
 };
 
 #endif
