@@ -10,13 +10,12 @@ using namespace std;
 class memcompa {
   public:
     memcompa(string room_name);
-    int agregar_msg(char *msg);
-    void modificar_msg(int clave, char valor[100]);
-    char* consultar_msg(int clave);
-    void destruir_msg(int clave);
+    void agregar_msg(string message);
     int strToAsciiInt(string var);
   private:
     int var_comp;
+    string client_name;
+    string *p;
 };
 
 #endif
