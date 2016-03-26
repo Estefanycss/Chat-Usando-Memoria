@@ -11,7 +11,6 @@ memcompa::memcompa(graphicInterface *ui){
   agregar_msg(message_value);
   cout << "Press enter";
   cin.get();
-  cout << "\033[H\033[J";
   ui->loadChatInterface();
 }
 int memcompa::strToAsciiInt(string var){

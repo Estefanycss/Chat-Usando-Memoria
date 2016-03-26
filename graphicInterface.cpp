@@ -2,10 +2,13 @@
 
 string graphicInterface::loadIn(){
   string room_name;
+  cout << "\033[H\033[J";
+  crearRecuadro();
+  gotoxy(2, 5);
   cout << "Welcome to the coolest chat on earth" << endl << endl;
-  cout << "Write room name: ";
+  cout << "\tWrite room name: ";
   cin >> room_name;
-  cout << endl << "Write your name: ";
+  cout << endl << "\tWrite your name: ";
   cin >> client_name;
   return room_name;
 }
@@ -38,6 +41,7 @@ void graphicInterface::addNewMessage(string message){
 
 void graphicInterface::loadChatInterface(){
   //Cargar mensajes anteriores
+  cout << "\033[H\033[J";
   string a;
   crearRecuadro();
   gotoxy(30, 2);
