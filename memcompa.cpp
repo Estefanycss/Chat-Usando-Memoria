@@ -3,13 +3,13 @@
 memcompa::memcompa(graphicInterface *ui){
   string message;
   string room_name = ui->loadIn();
-  //std::cout << "Received: " << room_name << ". Created key: " << strToAsciiInt(room_name)  << std::endl;
   var_comp = shmget((key_t) strToAsciiInt(room_name), sizeof(message_value), IPC_CREAT|0666);
-  cout << ui->getUserName() << " write a message: ";
+  //Por motivos de prueba:
+  cout <<"\t"<< ui->getUserName() << " write a message: ";
   cin.get();
   cin.getline(message_value, 100);
   agregar_msg(message_value);
-  cout << "Press enter";
+  cout << "\tPress enter";
   cin.get();
   ui->loadChatInterface();
 }
@@ -24,7 +24,7 @@ int memcompa::strToAsciiInt(string var){
 void memcompa::agregar_msg(char * message){
   p = static_cast<char *>(shmat(var_comp,NULL,0));
   strcpy(p, message);
-  cout << "Sending: " << message << endl;
+  cout << "\tSending: " << message << endl;
   shmdt(p);
 
   p = static_cast<char *>(shmat(var_comp,NULL,0));
@@ -32,5 +32,5 @@ void memcompa::agregar_msg(char * message){
   strcpy(message, p);
   //valor = *p;
   shmdt(p);
-  cout << "Receiving: " << message << endl;
+  cout << "\tReceiving: " << message << endl;
 }
