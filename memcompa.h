@@ -14,6 +14,9 @@ class memcompa {
     void modificar_msg(int clave, char valor[100]);
     char* consultar_msg(int clave);
     void destruir_msg(int clave);
+    int strToAsciiInt(string var);
+  private:
+    int var_comp;
 };
 
 #endif
