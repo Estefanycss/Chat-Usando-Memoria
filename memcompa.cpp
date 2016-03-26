@@ -1,13 +1,18 @@
 #include "memcompa.h"
 
-memcompa::memcompa(string room_name){
+memcompa::memcompa(graphicInterface *ui){
   string message;
-  std::cout << "Received: " << room_name << ". Created key: " << strToAsciiInt(room_name)  << std::endl;
+  string room_name = ui->loadIn();
+  //std::cout << "Received: " << room_name << ". Created key: " << strToAsciiInt(room_name)  << std::endl;
   var_comp = shmget((key_t) strToAsciiInt(room_name), sizeof(message_value), IPC_CREAT|0666);
-  cout << "Write a message: ";
+  cout << ui->getUserName() << " write a message: ";
   cin.get();
   cin.getline(message_value, 100);
   agregar_msg(message_value);
+  cout << "Press enter";
+  cin.get();
+  cout << "\033[H\033[J";
+  ui->loadChatInterface();
 }
 int memcompa::strToAsciiInt(string var){
   int sum = 0;

@@ -20,6 +20,7 @@ class graphicInterface{
   public:
     string loadIn();
     string getLastMessage();
+    string getUserName();
     void addNewMessage(string message);
     void loadChatInterface();
     void crearRecuadro();

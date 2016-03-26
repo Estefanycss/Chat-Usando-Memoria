@@ -7,11 +7,12 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#include "graphicInterface.h"
 #define CLAVE 2000000000
 using namespace std;
 class memcompa {
   public:
-    memcompa(string room_name);
+    memcompa(graphicInterface *ui);
     void agregar_msg(char * message);
     int strToAsciiInt(string var);
   private:

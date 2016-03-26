@@ -9,7 +9,9 @@ string graphicInterface::loadIn(){
   cin >> client_name;
   return room_name;
 }
-
+string graphicInterface::getUserName(){
+  return client_name;
+}
 void graphicInterface::gotoxy(int x, int y){
 #ifdef __linux__
   cout << ("\033[" + std::to_string(x) + ";" + std::to_string(y) + "H");
