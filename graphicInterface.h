@@ -22,11 +22,13 @@ class graphicInterface{
     string getLastMessage();
     string getUserName();
     void addNewMessage(string message);
+    char * loadChatMInterface();
     void loadChatInterface();
     void crearRecuadro();
   private:
     void gotoxy(int x, int y);
     string client_name;
+    string room_name;
     vector<string> messages;
 };
 

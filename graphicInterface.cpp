@@ -10,6 +10,7 @@ string graphicInterface::loadIn(){
   cin >> room_name;
   cout << endl << "\tWrite your name: ";
   cin >> client_name;
+  this->room_name = room_name;
   return room_name;
 }
 string graphicInterface::getUserName(){
@@ -38,16 +39,41 @@ void graphicInterface::addNewMessage(string message){
   //Se agrega a la lista de mensajes y luego se cargan
   loadChatInterface();
 }
-
 void graphicInterface::loadChatInterface(){
-  //Cargar mensajes anteriores
+  int x = 26, y = 2;
   cout << "\033[H\033[J";
-  string a;
   crearRecuadro();
+  gotoxy(0, 2);
+  cout << COLOR_ROJO << client_name <<" estas chateando en la sala: " << room_name;
+  if(messages.size() > 0)
+    for (int i = messages.size() - 1; i >= 0 && x > 2; i--) {
+       y = (messages.at(i).find(getUserName()) != string::npos)?2:(80 - messages.at(i).length());
+       gotoxy(x, y);
+       x -= 2;
+       cout << messages.at(i);
+    }
+}
+char * graphicInterface::loadChatMInterface(){
+  //Cargar mensajes anteriores
+  static char mess[500];
+  int x = 26, y = 2;
+  cout << "\033[H\033[J";
+  crearRecuadro();
+  gotoxy(0, 2);
+  cout << COLOR_ROJO << client_name <<" estas chateando en la sala: " << room_name;
+  for (int i = messages.size() - 1; i >= 0 && x > 2; i--) {
+     y = (messages.at(i).find(getUserName()) != string::npos)?2:(80 - messages.at(i).length());
+     gotoxy(x, y);
+     x -= 2;
+     cout << COLOR_NORMAL << messages.at(i);
+  }
   gotoxy(30, 2);
-  cout << "Mensaje: ";
-  cin >> a;
+  cout << COLOR_ROJO << messages.size() << " mensajes recibidos";
+  gotoxy(28, 2);
+  cout << COLOR_AZUL << "Mensaje: ";
+  cin.getline(mess, 500);
   crearRecuadro();
+  return mess;
 }
 void graphicInterface::crearRecuadro(){
   int index;
