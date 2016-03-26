@@ -12,7 +12,7 @@ using namespace std;
 int main(int argc, char *argv[]){
     graphicInterface ui;
     memcompa mc(ui.loadIn());
-    cout << "\033[H\033[J";
-    ui.loadChatInterface();
+    //cout << "\033[H\033[J";
+    //ui.loadChatInterface();
 
 }

@@ -25,6 +25,7 @@ class graphicInterface{
     void crearRecuadro();
   private:
     void gotoxy(int x, int y);
+    string client_name;
     vector<string> messages;
 };
 

@@ -5,6 +5,8 @@ string graphicInterface::loadIn(){
   cout << "Welcome to the coolest chat on earth" << endl << endl;
   cout << "Write room name: ";
   cin >> room_name;
+  cout << endl << "Write your name: ";
+  cin >> client_name;
   return room_name;
 }
 
