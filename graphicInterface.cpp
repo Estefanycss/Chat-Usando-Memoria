@@ -1,7 +1,7 @@
 #include "graphicInterface.h"
 
 string graphicInterface::loadIn(){
-  string room_name = "EK";
+  string room_name;
   cout << "Welcome to the coolest chat on earth" << endl << endl;
   cout << "Write room name: ";
   cin >> room_name;
