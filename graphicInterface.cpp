@@ -37,6 +37,12 @@ void graphicInterface::addNewMessage(string message){
 }
 
 void graphicInterface::loadChatInterface(){
+  //Cargar mensajes anteriores
+  string a;
+  crearRecuadro();
+  gotoxy(30, 2);
+  cout << "Mensaje: ";
+  cin >> a;
   crearRecuadro();
 }
 void graphicInterface::crearRecuadro(){
