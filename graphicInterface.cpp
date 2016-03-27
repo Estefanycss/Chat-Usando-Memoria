@@ -11,6 +11,8 @@ string graphicInterface::loadIn(){
   cout << endl << "\tWrite your name: ";
   cin >> client_name;
   this->room_name = room_name;
+  cout << "\033[H\033[J";
+  loadChatInterface();
   return room_name;
 }
 string graphicInterface::getUserName(){
@@ -40,39 +42,27 @@ void graphicInterface::addNewMessage(string message){
   loadChatInterface();
 }
 void graphicInterface::loadChatInterface(){
-  int x = 26, y = 2;
+  int x = 26, y = 7;
   cout << "\033[H\033[J";
   crearRecuadro();
   gotoxy(0, 2);
-  cout << COLOR_ROJO << client_name <<" estas chateando en la sala: " << room_name;
-  if(messages.size() > 0)
-    for (int i = messages.size() - 1; i >= 0 && x > 2; i--) {
-       y = (messages.at(i).find(getUserName()) != string::npos)?2:(80 - messages.at(i).length());
-       gotoxy(x, y);
-       x -= 2;
-       cout << messages.at(i);
-    }
-}
-char * graphicInterface::loadChatMInterface(){
-  //Cargar mensajes anteriores
-  static char mess[500];
-  int x = 26, y = 2;
-  cout << "\033[H\033[J";
-  crearRecuadro();
-  gotoxy(0, 2);
-  cout << COLOR_ROJO << client_name <<" estas chateando en la sala: " << room_name;
+  cout << COLOR_ROJO << client_name <<", estas chateando en la sala: " << room_name << endl;
+  gotoxy(2, 2);
+  cout << COLOR_ROJO << "[" <<messages.size() << " mensajes recibidos]" << endl;
   for (int i = messages.size() - 1; i >= 0 && x > 2; i--) {
-     y = (messages.at(i).find(getUserName()) != string::npos)?2:(80 - messages.at(i).length());
+     y = (messages.at(i).substr(0, messages.at(i).find(":")) == getUserName())?7:(75 - messages.at(i).length());
      gotoxy(x, y);
      x -= 2;
      cout << COLOR_NORMAL << messages.at(i);
   }
   gotoxy(30, 2);
-  cout << COLOR_ROJO << messages.size() << " mensajes recibidos";
-  gotoxy(28, 2);
-  cout << COLOR_AZUL << "Mensaje: ";
+  cout << COLOR_AZUL << "Mensaje" << endl << "\t";
+}
+char * graphicInterface::loadChatMInterface(){
+  static char mess[500];
+  gotoxy(30, 2);
+  cout << COLOR_AZUL << "Mensaje" << endl << "\t";
   cin.getline(mess, 500);
-  crearRecuadro();
   return mess;
 }
 void graphicInterface::crearRecuadro(){
