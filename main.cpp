@@ -8,6 +8,7 @@ Autores:
 #include <stdio.h>
 #include "memcompa.h"
 #include "graphicInterface.h"
+#include <string.h>
 using namespace std;
 int main(int argc, char *argv[]){
     graphicInterface *ui;
