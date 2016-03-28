@@ -1,5 +1,5 @@
 # Chat-Usando-Memoria
 Chat usando memoria compartida
 
-Para compiliar:
+Para compilar:
 g++ -pthread -std=c++11 *.cpp
