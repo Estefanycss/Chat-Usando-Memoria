@@ -91,7 +91,7 @@ void graphicInterface::crearRecuadro(){
   int x, y;
   x = 0; y = 0;
   #ifdef __linux__
-    int tam_ancho = 80;
+    tam_ancho = 80;
     cout << COLOR_VERDE;
     gotoxy(x, y);
     for(index = 0; index < tam_ancho; index++){
