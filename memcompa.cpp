@@ -64,7 +64,10 @@ void memcompa::agregar_msg(const char * message){
   string var;
   while(true){
     var = this->ui->getUserName() + ": " + string(this->ui->loadChatMInterface());
-    agregar_msg(var.c_str());
+    if(var.find("exit") == string::npos)
+    	agregar_msg(var.c_str());
+    else
+    	exit(0);
     dormir(1);
   }
 }
